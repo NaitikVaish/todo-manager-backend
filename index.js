@@ -17,7 +17,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"],
+    origin: "*",
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
@@ -30,6 +30,10 @@ app.use(cookieParser());
 
 app.use(morgan("dev"));
 app.use("/api", routes);
+
+app.get("/", (req, res) => {
+  return res.send("Server is up and running!!");
+})
 
 app.use(routeNotFound);
 app.use(errorHandler);
