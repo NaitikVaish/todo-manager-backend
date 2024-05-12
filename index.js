@@ -16,7 +16,11 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 app.use(
-  cors()
+  cors({
+    origin: ["http://localhost:3000", "http://localhost:3001", "https://taskify-xohw.onrender.com"],
+    methods: ["GET", "POST", "DELETE", "PUT"],
+    credentials: true,
+  })
 );
 
 app.use(express.json());
